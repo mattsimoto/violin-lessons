@@ -7,7 +7,7 @@ A mobile-friendly visual violin tutor built for a beginning player. Open `index.
 - 16 lessons across six stages: open strings and bowing, first melodies, string crossings, fourth finger, alternative finger patterns, and harmony.
 - First-position fingerboard with numbered contact points, string highlights, and proportional semitone spacing. Flip the string display to match the preferred viewing direction.
 - Animated song and exercise playback, synthesized pitch references, 30–120 BPM tempo, loop, pause, restart, and note-by-note navigation.
-- Clickable pitch-reference treble staff and beat lengths in the sequence (the staff displays the current pitch, not a complete engraved score).
+- Finger view for a single note’s placement, and Sheet music view for the full current lesson, song, or chord. Engraved rhythms, accidentals, and ties follow the same note data as playback. The current note highlights in orange; clicking or keyboard-selecting a score note seeks playback.
 - Static explorer for all first-position semitones from open string to fourth finger; two-note chord shapes on adjacent strings.
 - Device-local practice progress, with a confirmation before reset. Completion is self-reported, with no microphone or pitch grading.
 - Links to 8notes, MuseScore, and an external fingering reference. External scores are not scraped, copied, imported, or automatically animated.
@@ -24,7 +24,7 @@ Add that page to your phone's home screen if desired. There is no offline servic
 
 Fingers: 0 = open, 1 = index, 2 = middle, 3 = ring, 4 = pinky. Standard tuning: G3 D4 A4 E5. All diagrams use first position. The distance from the nut is proportional to `1 - 2^(-semitones/12)`, with a fixed display scale; it is not a tape-placement measurement for a physical instrument. Fingering choices are explicit per note, so fourth-finger A on D can coexist with open A. A teacher may choose other fingerings.
 
-The built-in traditional melodies and Beethoven excerpt are newly entered, simplified arrangements of public-domain compositions. Website-specific arrangements and scans have not been reused. The app's timing follows each note's beat value. The reference sound is a triangle oscillator, not a sampled violin. The current-note staff spells sharps explicitly; it does not engrave measures or key signatures.
+The built-in traditional melodies and Beethoven excerpt are newly entered, simplified arrangements of public-domain compositions. Website-specific arrangements and scans have not been reused. The app's timing follows each note's beat value. The reference sound is a triangle oscillator, not a sampled violin. Finger view has a current-note pitch reference. Sheet music view engraves the full practice arrangement in 4/4 with explicit accidentals, measures, and ties for sustained notes crossing bar lines. Short exercises may end with a partial measure. The bundled abcjs 6.7.1 notation renderer is MIT licensed; its license is included under vendor/.
 
 ## Curriculum content
 
