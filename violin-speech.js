@@ -1,0 +1,3 @@
+'use strict';
+const violinReadButton=document.getElementById('readViolin');
+if(!window.speechSynthesis)violinReadButton.hidden=true;else{violinReadButton.onclick=()=>{window.speechSynthesis.cancel();const text=[document.getElementById('lessonTitle').textContent,document.getElementById('lessonDescription').textContent,...Array.from(document.querySelectorAll('#steps li')).map(el=>el.textContent)].join('. ');const speech=new SpeechSynthesisUtterance(text);speech.rate=Learners.current().mode==='young'?.85:1;window.speechSynthesis.speak(speech);};document.querySelectorAll('[data-lesson]').forEach(b=>b.addEventListener('click',()=>window.speechSynthesis.cancel()));document.addEventListener('visibilitychange',()=>{if(document.hidden)window.speechSynthesis.cancel();});}

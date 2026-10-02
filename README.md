@@ -1,40 +1,50 @@
 # Little Strings
 
-A mobile-friendly visual violin tutor built for a beginning player. Open `index.html` directly or serve this folder as a static website. No package installation or account is needed.
+A browser-based music learning app with **violin and ukulele paths**, visual finger placement, synthesized practice audio, complete practice scores, and learner profiles. Hosted at [mattsimoto.github.io/violin-lessons](https://mattsimoto.github.io/violin-lessons/).
 
-## Included
+## Violin milestone
 
-- 16 lessons across six stages: open strings and bowing, first melodies, string crossings, fourth finger, alternative finger patterns, and harmony.
-- First-position fingerboard with numbered contact points, string highlights, and proportional semitone spacing. Flip the string display to match the preferred viewing direction.
-- Animated song and exercise playback, synthesized pitch references, 30–120 BPM tempo, loop, pause, restart, and note-by-note navigation.
-- Finger view for a single note’s placement, and Sheet music view for the full current lesson, song, or chord. Engraved rhythms, accidentals, and ties follow the same note data as playback. The current note highlights in orange; clicking or keyboard-selecting a score note seeks playback.
-- Static explorer for all first-position semitones from open string to fourth finger; two-note chord shapes on adjacent strings.
-- Device-local practice progress, with a confirmation before reset. Completion is self-reported, with no microphone or pitch grading.
-- Links to 8notes, MuseScore, and an external fingering reference. External scores are not scraped, copied, imported, or automatically animated.
+The complete violin version, including the hidden 221B Baker Street lesson, is preserved on [`milestone/violin-221b-2026-10-02`](https://github.com/mattsimoto/violin-lessons/tree/milestone/violin-221b-2026-10-02), starting at commit `e92003643f01f00834d86dbcfc76808222416a9b`. It remains independently recoverable as the multi-instrument app evolves.
 
-## Play on a phone
+## Learning experience
 
-In repository **Settings → Pages**, select **GitHub Actions** as the build source. Then run **Publish Little Strings** in the Actions tab (or push another commit). After successful deployment, open:
+- Choose violin or ukulele on the home page.
+- Each nickname has its own progress for both instruments, lesson presentation style (young learner with a helper, older learner, or adult), daily lesson goal, XP, and practice-day streak.
+- Ukulele has 18 lessons in six units, with Learn → Practice → Quick check stages. Finishing a lesson opens the next; completed lessons remain available for review. Explore freely gives experienced learners direct access to any lesson.
+- Each ukulele lesson includes two shuffled questions with retry feedback. In-app checks test understanding, not performance accuracy. Playing practice is self-reported.
+- New completions award 20 XP. Review does not award duplicate XP. Missed days carry no penalty or loss of progress.
+- Ukulele lessons can be read aloud using the browser's speech support. Both paths work with keyboard controls and small screens.
 
-https://mattsimoto.github.io/violin-lessons/
+## Profiles and saving
 
-Add that page to your phone's home screen if desired. There is no offline service worker in this version.
+Profiles live in browser localStorage under `little-strings-learners-v1`. No sign-in, server, or third-party account is needed. They are device-local practice profiles, not authenticated or private accounts. Export/import JSON moves progress between devices; imports add profiles and preserve existing profiles. The original violin progress is migrated to the first learner on the first visit. Violin reset clears only the active learner's violin completion list.
 
-## Teaching details
+Clearing browser data removes local profiles. Export a backup for durable personal progress. GitHub stores the application code, not learners' data.
 
-Fingers: 0 = open, 1 = index, 2 = middle, 3 = ring, 4 = pinky. Standard tuning: G3 D4 A4 E5. Core lessons use first position. The hidden 221B lesson includes suggested third- and sixth-position shifts on E. The distance from the nut is proportional to `1 - 2^(-semitones/12)`, with a fixed display scale; it is not a tape-placement measurement for a physical instrument. Fingering choices are explicit per note, so fourth-finger A on D can coexist with open A. A teacher may choose other fingerings.
+## Instruments
 
-The built-in traditional melodies and Beethoven excerpt are newly entered, simplified arrangements of public-domain compositions. Website-specific arrangements and scans have not been reused. The app's timing follows each note's beat value. The reference sound is a triangle oscillator, not a sampled violin. Finger view has a current-note pitch reference. Sheet music view engraves the full practice arrangement in 4/4 with explicit accidentals, measures, and ties for sustained notes crossing bar lines. Short exercises may end with a partial measure. The bundled abcjs 6.7.1 notation renderer is MIT licensed; its license is included under vendor/.
+### Violin
 
-## Curriculum content
+16 lessons, six levels, single notes, double stops, animated proportionate fingerboard guides, tab labels, synthesized reference audio, loops, adjustable tempo, and full-score playback highlighting. Core lessons use first position; the 221B bonus uses suggested third/sixth-position shifts on E. A violin has no physical frets: the guide lines represent semitone locations.
 
-Lesson data is near the top of `app.js`. Each note stores `s` (0=G, 1=D, 2=A, 3=E), `semi` (semitones above the open string), and `beats`. Double stops store `voices` plus `beats`. Add an explicit string assignment rather than inferring one from pitch alone. Keep pitches in the supported 0–7 semitone range until the finger-pattern renderer is extended.
+Tap the Little Strings logo three times quickly on the violin page for 221B, or open `violin.html?song=221b`. Legacy home-page `?song=221b` URLs redirect to the violin page. The bonus is a manually entered 36-measure practice adaptation of the Patrick Gowers theme from the user's supplied automated Songscription score. It retains rests, ties, 3/4 → 1/4 → 3/4, and the 77 → 74 BPM change. The measure-4 mordent is omitted, and F3/B♭3 in measure 34 are raised an octave for violin. This is not a verified transcription of the original orchestral score. The uploaded band recording is not redistributed.
 
-Next useful expansions: teacher-reviewed repertoire, an import flow for permitted MusicXML files with explicit fingering review, phrase selection, and higher-position diagrams. PDF and website URLs alone do not encode reliable animated fingering.
+### Ukulele
 
+Standard **high-G tuning: G4 C4 E4 A4**, for soprano, concert, or tenor. Baritone and low-G alternatives are not configured. Chord arrays are in G–C–E–A order: C `0003`, Am `2000`, F `2010`, G7 `0212`, G `0232`. Markers sit **behind** each physical fret wire and show finger numbers; tab labels show string/fret. Flip view mirrors the diagram.
 
-## Hidden 221B Baker Street lesson
+Curriculum: hold/tune/pluck → fretted notes and C major → Rain Rain Go Away → C/Am/F → rhythm/rests/G7 → transitions → Frère Jacques and Lightly Row melodies → Skip to My Lou accompaniment → G and down-up strumming → original chord practice piece. Traditional tunes are newly entered simplified practice arrangements. Frère Jacques has an octave-adapted closing cadence for high-G tuning. Skip to My Lou is a harmony chart; reference playback sounds the chords rather than the sung melody.
 
-Tap the Little Strings logo three times quickly, or open `?song=221b`. This bonus stays outside the 16-lesson learning path and completion count. It uses a manually entered 36-measure violin practice adaptation of the Patrick Gowers theme from the score supplied by the user. It retains 3/4, the one-bar 1/4 change, the 77-to-74 BPM change, rests, and ties. The small mordent in measure 4 is omitted; the F3/B♭3 pair in measure 34 is raised an octave for violin. Source material was an automated Songscription transcription and has not been checked against the original orchestral score. The app synthesizes the melody; it does not play or redistribute the uploaded band recording. Higher-position fingerings are suggestions for teacher review.
+Foundational tuning/chord references: [Fender ukulele tuning](https://www.fender.com/articles/setup/how-to-tune-a-ukulele) and [Fender beginner chords](https://www.fender.com/articles/chords/ukulele-chords-for-beginners). Their arrangements and teaching copy are not reproduced.
 
-The bonus data and its adaptation notes live in `sherlock.js`.
+## Files and development
+
+- `index.html`: instrument selection hub.
+- `learners.js`, `learning.css`: shared profiles and learning UI.
+- `violin.html`, `app.js`, `sherlock.js`, `style.css`: violin course.
+- `ukulele.html`, `ukulele.js`, `uke-data.js`, `ukulele.css`: ukulele course.
+- `vendor/abcjs-basic-min.js`: bundled abcjs 6.7.1 (MIT; included license).
+
+No production build step. Tests use Node 22.22.2+ or 24.15+ and jsdom: `npm install && npm test`. They verify all ukulele scores, note durations, chord voicings, fret-marker placement, checkpoints, unlocks, profile isolation, migration, XP, and the retained violin/221B flow. Run a local HTTP server from the repository directory, for example `python -m http.server 8080`, then visit localhost:8080. GitHub Pages deploys the main branch. Synthesized triangle tones are practice references, not recordings of real instruments. The app does not use a microphone or evaluate instrumental performance.
+
+Next substantial features: teacher-reviewed repertoire, phrase looping, user-managed accounts and cross-device synchronization, and supported MusicXML imports with fingering review.
