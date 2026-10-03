@@ -10,7 +10,7 @@ The complete violin version, including the hidden 221B Baker Street lesson, is p
 
 - Choose violin or ukulele on the home page.
 - Each nickname has its own progress for both instruments, lesson presentation style (young learner with a helper, older learner, or adult), daily lesson goal, XP, and practice-day streak.
-- Ukulele has 18 lessons in six units, with Learn → Practice → Quick check stages. Finishing a lesson opens the next; completed lessons remain available for review. Explore freely gives experienced learners direct access to any lesson.
+- Ukulele has 18 lessons in six units, with Learn → Practice → Quick check stages. Every lesson is available from the start. Skip ahead or revisit any lesson; opening a lesson does not mark it complete.
 - Each ukulele lesson includes two shuffled questions with retry feedback. In-app checks test understanding, not performance accuracy. Playing practice is self-reported.
 - New completions award 20 XP. Review does not award duplicate XP. Missed days carry no penalty or loss of progress.
 - Ukulele lessons can be read aloud using the browser's speech support. Both paths work with keyboard controls and small screens.
@@ -45,6 +45,6 @@ Foundational tuning/chord references: [Fender ukulele tuning](https://www.fender
 - `ukulele.html`, `ukulele.js`, `uke-data.js`, `ukulele.css`: ukulele course.
 - `vendor/abcjs-basic-min.js`: bundled abcjs 6.7.1 (MIT; included license).
 
-No production build step. Tests use Node 22.22.2+ or 24.15+ and jsdom: `npm install && npm test`. They verify all ukulele scores, note durations, chord voicings, fret-marker placement, checkpoints, unlocks, profile isolation, migration, XP, and the retained violin/221B flow. Run a local HTTP server from the repository directory, for example `python -m http.server 8080`, then visit localhost:8080. GitHub Pages deploys the main branch. Synthesized triangle tones are practice references, not recordings of real instruments. The app does not use a microphone or evaluate instrumental performance.
+No production build step. Tests use Node 22.22.2+ or 24.15+ and jsdom: `npm install && npm test`. They verify all ukulele scores, note durations, chord voicings, fret-marker placement, checkpoints, free lesson navigation, profile isolation, migration, XP, and the retained violin/221B flow. Run a local HTTP server from the repository directory, for example `python -m http.server 8080`, then visit localhost:8080. GitHub Pages deploys the main branch. Synthesized triangle tones are practice references, not recordings of real instruments. The app does not use a microphone or evaluate instrumental performance.
 
 Next substantial features: teacher-reviewed repertoire, phrase looping, user-managed accounts and cross-device synchronization, and supported MusicXML imports with fingering review.
