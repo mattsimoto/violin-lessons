@@ -25,7 +25,7 @@ Clearing browser data removes local profiles. Export a backup for durable person
 
 ### Violin
 
-28 lessons, ten levels, single notes, double stops, animated proportionate fingerboard guides, tab labels, synthesized reference audio, loops, adjustable tempo, and full-score playback highlighting. Core lessons use first position; the 221B bonus uses suggested third/sixth-position shifts on E. A violin has no physical frets: the guide lines represent semitone locations.
+29 lessons, ten levels, single notes, double stops, animated proportionate fingerboard guides, tab labels, synthesized reference audio, loops, adjustable tempo, and full-score playback highlighting. Core lessons use first position; the 221B bonus uses suggested third/sixth-position shifts on E. A violin has no physical frets: the guide lines represent semitone locations.
 
 Tap the Little Strings logo three times quickly on the violin page for 221B, or open `violin.html?song=221b`. Legacy home-page `?song=221b` URLs redirect to the violin page. The bonus is a manually entered 36-measure practice adaptation of the Patrick Gowers theme from the user's supplied automated Songscription score. It retains rests, ties, 3/4 → 1/4 → 3/4, and the 77 → 74 BPM change. The measure-4 mordent is omitted, and F3/B♭3 in measure 34 are raised an octave for violin. This is not a verified transcription of the original orchestral score. The uploaded band recording is not redistributed.
 
@@ -51,7 +51,7 @@ Next substantial features: teacher-reviewed repertoire, phrase looping, user-man
 
 ## Intermediate and advanced curriculum
 
-Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Each subsequent track contains six lessons and opens after all earlier-track lessons are completed. Users may jump ahead or revisit within an open track without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
+Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons and opens after all earlier-track lessons are completed. Users may jump ahead or revisit within an open track without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
 
 Violin adds 12 lessons: two-note slurs, dotted rhythm, **Meadow Path**; first-to-third shifts, third-position ladder, **Window Light**; sixteenths, moving drone double stops, **Two Voices at Dawn**; fifth-position shifts, four-note slurs, **The Long Way Home**. Higher notes carry explicit suggested finger and hand-position metadata. Diagrams extend to the highest location in the piece, and the sheet score shows slurs. The reference synthesizer provides pitches and durations; it does not reproduce bow articulation or dynamics. A teacher can check shifting and bow technique.
 
@@ -60,3 +60,9 @@ Ukulele adds 12 lessons: syncopation, fingerpicking, **Lantern Walk**; Dm/E7, Bb
 Technique references: [Violin Online positions](https://www.violinonline.com/shifting.htm), [Ukulele Tricks barre technique](https://ukuleletricks.com/improve-barre-chords-on-ukulele/), and [Ukulele Tricks chord reference](https://ukuleletricks.com/ukulele-chords/). No source teaching copy or arrangements are reproduced.
 
 `tracks.js` defines track membership, completion gates, and shared track cards. Main progress counts refer to the selected track, not the entire instrument catalog. Previously recorded intermediate/advanced progress is preserved, but those tracks require their prerequisite completion to open. Resetting or undoing prerequisites locks subsequent tracks again without deleting their saved lessons. The 221B easter egg stays independent of the track gates.
+
+## Noble Maiden Fair
+
+The final Intermediate violin lesson uses the complete 33-bar arrangement supplied in the user's screenshot, credited to composer Patrick Doyle and arranger Lauren Williams. It retains G major, 3/4, opening rests, dotted rhythms, slurs, and ties, including the E sustained across bars 16–17. Suggested fingerings use first position, and the score highlights individual events while tied pitches sustain during continuous playback. The supplied score has no tempo marking; 60 BPM is a practice default. This is manually entered from the supplied image, not an original arrangement. Beginner remains 16 lessons; this finale becomes the seventh Intermediate requirement before Advanced opens. Existing completion IDs are retained.
+
+`noble.js` contains the source-bar event data and lesson metadata. The standard notation builder now accepts meter and G-major key signature options, rests, and explicit ties as well as slurs. Tests verify 33 bars, 99 beats, key/meter, event mapping, tie counts, and the updated track gate.
