@@ -7,3 +7,5 @@ body.violin-course .level-group>p{background:#eaf2f4;padding:10px 12px;border-ra
 .course-card.accordion .course-button{background:#9b5527}.course-card.accordion progress{accent-color:#9b5527}
 
 .formby-room{padding:26px;background:#fcf2e2;border:2px solid #bd8754;border-radius:18px;margin-bottom:28px}.formby-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.formby-grid article{background:#fff;padding:18px;border-radius:12px}.formby-grid h3{font-size:18px;margin-top:0}.formby-grid a{display:block;margin-top:14px;font-size:13px;color:#126a79}.formby-grid button{font-size:13px}.formby-grid p{font-size:14px}.course-grid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.formby-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.course-grid,.formby-grid{grid-template-columns:1fr}.formby-room{padding:18px}}
+
+.course-card.ensemble{border-top-color:#8156b0}.course-card.ensemble .course-button{background:#8156b0}.course-nav{flex-wrap:wrap}header{flex-wrap:wrap}
