@@ -9,8 +9,4 @@ const SHERLOCK_COLLECTION = [sherlockLesson,{
  steps:['Feel two gentle groups of three eighth notes in each bar. The tempo slider counts quarter notes.','Learn the opening slowly before the higher passage; the upper passage uses the E string.','This is the complete melody from the source MIDI, without accompaniment. MIDI ornament flourishes are omitted for steady melody practice.'],
  goal:'I can keep the rocking pulse and play one phrase at a time.',tip:'Keep the bow flowing. Keep your fourth finger relaxed on the E string.',
  sourceUrl:'https://www.8notes.com/scores/11931.asp',sourceLabel:'View the source score on 8notes'
-},...[
- ['holmes-the-woman','The Woman','Intermediate','https://www.michaelpricemusic.com/music/sherlock/','Composer’s violin-and-piano score'],
- ['holmes-waltz','Waltz for John and Mary','Intermediate','https://tomplay.com/violin-sheet-music/david-arnold/waltz-for-john-and-mary-intermediate-level-violin-score','View violin score options'],
- ['holmes-game','The Game Is On','Advanced','https://www.sheetmusicplus.com/en/product/the-game-is-on-22357042.html','View the solo-violin arrangement']
-].map(([id,title,level,sourceUrl,sourceLabel])=>({id,title,secret:true,pending:true,level:level==='Advanced'?10:7,type:'Secret song · '+level.toLowerCase(),tempo:60,notes:[{rest:true,beats:1}],description:'David Arnold & Michael Price · BBC Sherlock. Load your violin part to practice this piece with animated fingerings and highlighted sheet music.',steps:['Open the score resource, or use the copy you already have.','Load an uncompressed MusicXML (.musicxml or .xml) violin part below.','Start slowly, then use note seeking and Loop to practice.'],goal:'I can follow the violin melody in my score.',tip:'Suggested fingerings should be checked with a teacher.',sourceUrl,sourceLabel}))];
+}];

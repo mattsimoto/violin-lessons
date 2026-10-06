@@ -26,17 +26,16 @@ second.w.violinTest.choose('221b');second.w.document.querySelector('#sheetView')
 // Ten logo clicks, never three or nine; secret access must not award progress.
 second.w.violinTest.choose('open');const beforeSecret=second.w.Learners.current().xp;
 for(let i=0;i<9;i++)second.w.document.querySelector('.brand').click();assert.equal(second.w.document.querySelector('#lessonTitle').textContent,'Hello, four strings');second.w.document.querySelector('.brand').click();assert(second.w.document.querySelector('#complete').hidden);assert.equal(second.w.Learners.current().xp,beforeSecret);
-// Sherlock collection: actual melody mapping, pending score state, and MusicXML conversion.
+// Sherlock collection: actual melody mapping, only playable entries, and MusicXML conversion.
 const sw=second.w;sw.violinTest.choose('holmes-barcarolle');sw.document.querySelector('#sheetView').click();
-assert.equal(sw.document.querySelectorAll('[data-sherlock]').length,5);assert(sw.document.querySelector('#scoreError').hidden);
+assert.equal(sw.document.querySelectorAll('[data-sherlock]').length,2);assert(sw.document.querySelector('#scoreError').hidden);
 const bonus=sw.violinTest.collection.find(s=>s.id==='holmes-barcarolle');
 assert.equal(bonus.notes.length,167);assert.equal(bonus.notes.reduce((a,n)=>a+n.beats,0),162);
 assert.equal(sw.document.querySelectorAll('#fullScore .abcjs-note,#fullScore .abcjs-rest').length,sw.violinTest.build(bonus.notes,bonus.title,2,bonus).segments.length);
 for(const n of bonus.notes)for(const v of sw.violinTest.voices(n))assert(sw.violinTest.pattern(v));
-sw.violinTest.choose('holmes-the-woman');assert(sw.document.querySelector('.transport').hidden);assert(sw.document.querySelector('#fingerStage').hidden);assert(!sw.document.querySelector('#sherlockImport').hidden);
+for(const id of ['holmes-the-woman','holmes-waltz','holmes-game']){sw.violinTest.choose(id);assert.equal(sw.document.querySelector('#lessonTitle').textContent,'Barcarolle');assert(!sw.document.querySelector('[data-sherlock="'+id+'"]'));}
 const fixture='<score-partwise><part-list><score-part id="P1"><part-name>Violin</part-name></score-part></part-list><part id="P1"><measure number="1"><attributes><divisions>3</divisions><time><beats>3</beats><beat-type>4</beat-type></time></attributes><note><pitch><step>B</step><alter>-1</alter><octave>4</octave></pitch><duration>3</duration><tie type="start"/></note><note><pitch><step>B</step><alter>-1</alter><octave>4</octave></pitch><duration>3</duration><tie type="stop"/></note><note><rest/><duration>3</duration></note></measure><measure number="2"><note><pitch><step>D</step><octave>5</octave></pitch><duration>1</duration></note><note><pitch><step>E</step><octave>5</octave></pitch><duration>1</duration></note><note><pitch><step>F</step><octave>5</octave></pitch><duration>1</duration></note><note><rest/><duration>6</duration></note></measure></part></score-partwise>';
 const imported=sw.violinTest.parseXML(fixture);assert.equal(imported.notes.length,7);assert.equal(imported.notes[0].spelling,'Bb4');assert(imported.notes[0].tie);assert.equal(imported.notes.reduce((a,n)=>a+n.beats,0),6);
-sw.localStorage.setItem('little-strings-score-holmes-the-woman',fixture);sw.violinTest.restoreScores();sw.violinTest.choose('holmes-the-woman');sw.document.querySelector('#sheetView').click();assert(!sw.document.querySelector('.transport').hidden);assert(sw.document.querySelector('#scoreError').hidden);assert.equal(sw.document.querySelectorAll('#fullScore .abcjs-note,#fullScore .abcjs-rest').length,7);
 assert.throws(()=>sw.violinTest.parseXML('<pdf/>'));assert.throws(()=>sw.violinTest.parseXML(fixture.replace('<octave>4</octave>','<octave>2</octave>')));assert.throws(()=>sw.violinTest.parseXML(fixture.replace('<pitch><step>B','<chord/><pitch><step>B')));
 assert.equal(sw.Learners.current().xp,beforeSecret);sw.document.querySelector('#closeSherlock').click();assert(sw.document.querySelector('#sherlockRoom').hidden);assert(!sw.document.querySelector('.transport').hidden);
 // Four ukulele clicks reveal six song choices, whose drills leave normal progress untouched.
