@@ -1,6 +1,6 @@
 # Little Strings
 
-A browser-based music learning app with **violin and ukulele paths**, visual finger placement, synthesized practice audio, complete practice scores, and learner profiles. Hosted at [mattsimoto.github.io/violin-lessons](https://mattsimoto.github.io/violin-lessons/).
+A browser-based music learning app with **violin, ukulele, and accordion paths**, visual finger placement, synthesized practice audio, complete practice scores, and learner profiles. Hosted at [mattsimoto.github.io/violin-lessons](https://mattsimoto.github.io/violin-lessons/).
 
 ## Violin milestone
 
@@ -8,12 +8,12 @@ The complete violin version, including the hidden 221B Baker Street lesson, is p
 
 ## Learning experience
 
-- Choose violin or ukulele on the home page.
-- Each nickname has its own progress for both instruments, lesson presentation style (young learner with a helper, older learner, or adult), daily lesson goal, XP, and practice-day streak.
-- Ukulele has 30 lessons in ten units, with Learn → Practice → Quick check stages. Beginner, Intermediate, and Advanced are separate tracks. Complete every Beginner lesson to open Intermediate, then complete every Intermediate lesson to open Advanced. Within an open track, skip ahead or revisit any lesson; opening one does not mark it complete.
+- Choose violin, ukulele, or accordion on the home page.
+- Each nickname has its own progress for all three instruments, lesson presentation style (young learner with a helper, older learner, or adult), daily lesson goal, XP, and practice-day streak.
+- Ukulele has 30 lessons in ten units, with Learn → Practice → Quick check stages. Beginner, Intermediate, and Advanced are separate tracks. All three tracks are accessible immediately. Skip ahead or revisit any lesson; opening one never marks it or earlier lessons complete.
 - Each ukulele lesson includes two shuffled questions with retry feedback. In-app checks test understanding, not performance accuracy. Playing practice is self-reported.
 - New completions award 20 XP. Review does not award duplicate XP. Missed days carry no penalty or loss of progress.
-- Ukulele lessons can be read aloud using the browser's speech support. Both paths work with keyboard controls and small screens.
+- Ukulele lessons can be read aloud using the browser's speech support. All paths work with keyboard controls and small screens.
 
 ## Profiles and saving
 
@@ -27,7 +27,7 @@ Clearing browser data removes local profiles. Export a backup for durable person
 
 29 lessons, ten levels, single notes, double stops, animated proportionate fingerboard guides, tab labels, synthesized reference audio, loops, adjustable tempo, and full-score playback highlighting. Core lessons use first position; the 221B bonus uses suggested third/sixth-position shifts on E. A violin has no physical frets: the guide lines represent semitone locations.
 
-Tap the Little Strings logo three times quickly on the violin page for 221B, or open `violin.html?song=221b`. Legacy home-page `?song=221b` URLs redirect to the violin page. The bonus is a manually entered 36-measure practice adaptation of the Patrick Gowers theme from the user's supplied automated Songscription score. It retains rests, ties, 3/4 → 1/4 → 3/4, and the 77 → 74 BPM change. The measure-4 mordent is omitted, and F3/B♭3 in measure 34 are raised an octave for violin. This is not a verified transcription of the original orchestral score. The uploaded band recording is not redistributed.
+Tap the Little Strings logo ten times quickly on the violin page for 221B, or open `violin.html?song=221b`. Legacy home-page `?song=221b` URLs redirect to the violin page. The bonus is a manually entered 36-measure practice adaptation of the Patrick Gowers theme from the user's supplied automated Songscription score. It retains rests, ties, 3/4 → 1/4 → 3/4, and the 77 → 74 BPM change. The measure-4 mordent is omitted, and F3/B♭3 in measure 34 are raised an octave for violin. This is not a verified transcription of the original orchestral score. The uploaded band recording is not redistributed.
 
 ### Ukulele
 
@@ -45,13 +45,13 @@ Foundational tuning/chord references: [Fender ukulele tuning](https://www.fender
 - `ukulele.html`, `ukulele.js`, `uke-data.js`, `ukulele.css`: ukulele course.
 - `vendor/abcjs-basic-min.js`: bundled abcjs 6.7.1 (MIT; included license).
 
-No production build step. Tests use Node 22.22.2+ or 24.15+ and jsdom: `npm install && npm test`. They verify all ukulele scores, note durations, chord voicings, fret-marker placement, checkpoints, free navigation within tracks and sequential track unlocking, profile isolation, migration, XP, and the retained violin/221B flow. Run a local HTTP server from the repository directory, for example `python -m http.server 8080`, then visit localhost:8080. GitHub Pages deploys the main branch. Synthesized triangle tones are practice references, not recordings of real instruments. The app does not use a microphone or evaluate instrumental performance.
+No production build step. Tests use Node 22.22.2+ or 24.15+ and jsdom: `npm install && npm test`. They verify all ukulele scores, note durations, chord voicings, fret-marker placement, checkpoints, free navigation across tracks without implied completion, exact secret-logo triggers, accordion two-hand score mappings and 41/120 diagrams, profile isolation, migration, XP, and the retained violin/221B flow. Run a local HTTP server from the repository directory, for example `python -m http.server 8080`, then visit localhost:8080. GitHub Pages deploys the main branch. Synthesized tones are practice references, not recordings of real instruments. The app does not use a microphone or evaluate instrumental performance.
 
 Next substantial features: teacher-reviewed repertoire, phrase looping, user-managed accounts and cross-device synchronization, and supported MusicXML imports with fingering review.
 
 ## Intermediate and advanced curriculum
 
-Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons and opens after all earlier-track lessons are completed. Users may jump ahead or revisit within an open track without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
+Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons ; all tracks are open without prerequisites. Users may jump ahead or revisit any track without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
 
 Violin adds 12 lessons: two-note slurs, dotted rhythm, **Meadow Path**; first-to-third shifts, third-position ladder, **Window Light**; sixteenths, moving drone double stops, **Two Voices at Dawn**; fifth-position shifts, four-note slurs, **The Long Way Home**. Higher notes carry explicit suggested finger and hand-position metadata. Diagrams extend to the highest location in the piece, and the sheet score shows slurs. The reference synthesizer provides pitches and durations; it does not reproduce bow articulation or dynamics. A teacher can check shifting and bow technique.
 
@@ -66,3 +66,18 @@ Technique references: [Violin Online positions](https://www.violinonline.com/shi
 The final Intermediate violin lesson uses the complete 33-bar arrangement supplied in the user's screenshot, credited to composer Patrick Doyle and arranger Lauren Williams. It retains G major, 3/4, opening rests, dotted rhythms, slurs, and ties, including the E sustained across bars 16–17. Suggested fingerings use first position, and the score highlights individual events while tied pitches sustain during continuous playback. The supplied score has no tempo marking; 60 BPM is a practice default. This is manually entered from the supplied image, not an original arrangement. Beginner remains 16 lessons; this finale becomes the seventh Intermediate requirement before Advanced opens. Existing completion IDs are retained.
 
 `noble.js` contains the source-bar event data and lesson metadata. The standard notation builder now accepts meter and G-major key signature options, rests, and explicit ties as well as slurs. Tests verify 33 bars, 99 beats, key/meter, event mapping, tie counts, and the updated track gate.
+
+
+## Accordion Beginner track
+
+Sixteen lessons tailored to the supplied Loretto Universal piano-accordion photographs: 41 keys (F3–A6) and a six-row, 120-button Stradella bass board. Beginner covers posture, air release, gentle bellows movement, C4 and five-finger C–G notes, rhythm/rests, Hot Cross Buns, Mary Had a Little Lamb, the C bass landmark, alternating bass/chord, F/C/G neighbors, 3/4 waltz accompaniment, sustained melody over accompaniment, Ode to Joy, G7, and two original two-hand pieces. Each has Learn / Practice / Check, read-aloud support, direct navigation, and isolated profile progress. No Intermediate/Advanced accordion content is represented as finished yet.
+
+Finger view renders an enlarged piano-key window with numbered active contacts, an expandable 41-key locator, a central bass-button window with active left finger, and an expandable 120-button map. Bass rows run from bellows edge outward: counterbass, root bass, major, minor, seventh, diminished. Central chart columns are B♭–F–C–G–D. C is shown as the expected tactile landmark, but its actual pitch must be verified; photographs cannot confirm tuning or register selection. Bellows directions are suggested phrase cues, not measured movements. Fingerings are suggested beginner choices.
+
+Sheet view has aligned treble and bass staves, per-event seeking and highlighting, right-finger and left-button annotations, rests, ties, 3/4 or 4/4, tempo, loop, and synthesized reference pitches. Stradella sevenths omit the fifth, matching the common standard. Acoustic reed registration and instrument voicing can vary. Sources for layout checks: [Stradella overview](https://www.accordions.com/index/art/stradella.shtml) and [120-bass layout/chord reference](https://accordionchords.com/stradella-bass-layouts/120-bass-accordion-chart/). All diagrams and exercises are newly generated; uploaded photographs are not redistributed.
+
+## Hidden George Formby room
+
+Four successive logo clicks on `ukulele.html` reveal six song-resource cards: Leaning on a Lamp Post, When I’m Cleaning Windows, It’s Turned Out Nice Again, My Ukulele, Riding in the TT Races, and Fanlight Fanny. Each provides an animated original accompaniment preparation drill with the existing fingerboard, strum direction, and score tools. Drills are explicitly distinct from the actual songs, do not award regular-course progress/XP, and are not claimed to reproduce song melodies or exact charts. Two cards link free online song chord charts; other cards identify the relevant George Formby Society songbook edition (paid). No lyrics, recordings, or unprovided copyrighted song notation are copied into the app. External tuning and lyric suitability should be checked with the learner/helper.
+
+New files: `accordion.html`, `accordion.css`, `accordion-data.js`, `accordion.js`, `formby-data.js`, `formby.js`. Existing profile exports migrate with empty accordion progress; new exports/imports include accordion completion and award history.
