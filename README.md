@@ -10,7 +10,7 @@ The complete violin version, including the hidden 221B Baker Street lesson, is p
 
 - Choose violin, ukulele, or accordion on the home page.
 - Each nickname has its own progress for all three instruments, lesson presentation style (young learner with a helper, older learner, or adult), daily lesson goal, XP, and practice-day streak.
-- Ukulele has 30 lessons in ten units, with Learn → Practice → Quick check stages. Beginner, Intermediate, and Advanced are separate tracks. All three tracks are accessible immediately. Skip ahead or revisit any lesson; opening one never marks it or earlier lessons complete.
+- Ukulele has 30 lessons in ten units, with Learn → Practice → Quick check stages. Beginner, Intermediate, and Advanced are separate tracks. Complete Beginner to unlock Intermediate, then Intermediate to unlock Advanced. Skip ahead or revisit any lesson; opening one never marks it or earlier lessons complete.
 - Each ukulele lesson includes two shuffled questions with retry feedback. In-app checks test understanding, not performance accuracy. Playing practice is self-reported.
 - New completions award 20 XP. Review does not award duplicate XP. Missed days carry no penalty or loss of progress.
 - Ukulele lessons can be read aloud using the browser's speech support. All paths work with keyboard controls and small screens.
@@ -51,7 +51,7 @@ Next substantial features: teacher-reviewed repertoire, phrase looping, user-man
 
 ## Intermediate and advanced curriculum
 
-Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons ; all tracks are open without prerequisites. Users may jump ahead or revisit any track without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
+Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons ; subsequent tracks unlock after every earlier track is completed. Users may jump ahead or revisit lessons within unlocked tracks without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
 
 Violin adds 12 lessons: two-note slurs, dotted rhythm, **Meadow Path**; first-to-third shifts, third-position ladder, **Window Light**; sixteenths, moving drone double stops, **Two Voices at Dawn**; fifth-position shifts, four-note slurs, **The Long Way Home**. Higher notes carry explicit suggested finger and hand-position metadata. Diagrams extend to the highest location in the piece, and the sheet score shows slurs. The reference synthesizer provides pitches and durations; it does not reproduce bow articulation or dynamics. A teacher can check shifting and bow technique.
 
