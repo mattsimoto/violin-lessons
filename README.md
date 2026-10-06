@@ -10,7 +10,7 @@ The complete violin version, including the hidden 221B Baker Street lesson, is p
 
 - Choose violin, ukulele, or accordion on the home page.
 - Each nickname has its own progress for all three instruments, lesson presentation style (young learner with a helper, older learner, or adult), daily lesson goal, XP, and practice-day streak.
-- Ukulele has 30 lessons in ten units, with Learn → Practice → Quick check stages. Beginner, Intermediate, and Advanced are separate tracks. Complete Beginner to unlock Intermediate, then Intermediate to unlock Advanced. Skip ahead or revisit any lesson; opening one never marks it or earlier lessons complete.
+- Ukulele has 34 lessons in eleven units, with Learn → Practice → Quick check stages. Beginner, Intermediate, and Advanced are separate tracks. Complete Beginner to unlock Intermediate, then Intermediate to unlock Advanced. Skip ahead or revisit any lesson; opening one never marks it or earlier lessons complete.
 - Each ukulele lesson includes two shuffled questions with retry feedback. In-app checks test understanding, not performance accuracy. Playing practice is self-reported.
 - New completions award 20 XP. Review does not award duplicate XP. Missed days carry no penalty or loss of progress.
 - Ukulele lessons can be read aloud using the browser's speech support. All paths work with keyboard controls and small screens.
@@ -51,7 +51,7 @@ Next substantial features: teacher-reviewed repertoire, phrase looping, user-man
 
 ## Intermediate and advanced curriculum
 
-Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains all 16 lessons; ukulele Beginner retains all 18. Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons ; subsequent tracks unlock after every earlier track is completed. Users may jump ahead or revisit lessons within unlocked tracks without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
+Both instruments have separate Beginner → Intermediate → Advanced tracks. Violin Beginner retains its original 16 lessons plus four scale lessons (20 total); ukulele Beginner retains its original 18 plus four scale lessons (22 total). Violin Intermediate contains seven lessons, including its song finale; the other subsequent tracks contain six lessons ; subsequent tracks unlock after every earlier track is completed. Users may jump ahead or revisit lessons within unlocked tracks without changing completion. Existing lesson IDs and profile progress are retained. These are guided practice studies, not graded qualifications.
 
 Violin adds 12 lessons: two-note slurs, dotted rhythm, **Meadow Path**; first-to-third shifts, third-position ladder, **Window Light**; sixteenths, moving drone double stops, **Two Voices at Dawn**; fifth-position shifts, four-note slurs, **The Long Way Home**. Higher notes carry explicit suggested finger and hand-position metadata. Diagrams extend to the highest location in the piece, and the sheet score shows slurs. The reference synthesizer provides pitches and durations; it does not reproduce bow articulation or dynamics. A teacher can check shifting and bow technique.
 
@@ -70,7 +70,7 @@ The final Intermediate violin lesson uses the complete 33-bar arrangement suppli
 
 ## Accordion Beginner track
 
-Sixteen lessons tailored to the supplied Loretto Universal piano-accordion photographs: 41 keys (F3–A6) and a six-row, 120-button Stradella bass board. Beginner covers posture, air release, gentle bellows movement, C4 and five-finger C–G notes, rhythm/rests, Hot Cross Buns, Mary Had a Little Lamb, the C bass landmark, alternating bass/chord, F/C/G neighbors, 3/4 waltz accompaniment, sustained melody over accompaniment, Ode to Joy, G7, and two original two-hand pieces. Each has Learn / Practice / Check, read-aloud support, direct navigation, and isolated profile progress. No Intermediate/Advanced accordion content is represented as finished yet.
+Twenty lessons tailored to the supplied Loretto Universal piano-accordion photographs: 41 keys (F3–A6) and a six-row, 120-button Stradella bass board. Beginner covers posture, air release, gentle bellows movement, C4 and five-finger C–G notes, rhythm/rests, Hot Cross Buns, Mary Had a Little Lamb, the C bass landmark, alternating bass/chord, F/C/G neighbors, 3/4 waltz accompaniment, sustained melody over accompaniment, Ode to Joy, G7, and two original two-hand pieces. Each has Learn / Practice / Check, read-aloud support, direct navigation, and isolated profile progress. No Intermediate/Advanced accordion content is represented as finished yet.
 
 Finger view renders an enlarged piano-key window with numbered active contacts, an expandable 41-key locator, a central bass-button window with active left finger, and an expandable 120-button map. Bass rows run from bellows edge outward: counterbass, root bass, major, minor, seventh, diminished. Central chart columns are B♭–F–C–G–D. C is shown as the expected tactile landmark, but its actual pitch must be verified; photographs cannot confirm tuning or register selection. Bellows directions are suggested phrase cues, not measured movements. Fingerings are suggested beginner choices.
 
@@ -97,3 +97,9 @@ All arrangements have violin, high-G ukulele, accordion right hand, and accordio
 Ensemble completion belongs to the active learner, awards 20 XP once per arrangement, and does not complete solo lessons or unlock their tracks. Existing profiles migrate with empty Ensemble progress; exports/imports include Ensemble records. Opening or playing an arrangement does not mark it complete. Tests verify all nine arrangements’ lead counts, four-voice timing, source-to-score beat mappings, playable ranges, finger diagrams, mixer choices, and isolated completion.
 
 Open the Ensemble section from the fourth home-page card or the Ensemble link in any instrument’s navigation.
+
+## Beginner scale collections
+
+Each instrument has a separate Scales section, appended to its existing Beginner content. Violin adds C major, A major, D natural minor, and G major pentatonic, all in first position. Ukulele adds D natural minor and C major pentatonic over one octave, plus clearly labeled five-note F-major and G-major patterns in standard high-G tuning; top D5 uses a gentle shift to A-string fret 5. Accordion adds full-octave C, G, and F major and A natural minor, with standard right-hand thumb-under / finger-over patterns and left hand resting. F major uses finger 4 on B♭ before passing the thumb under to C.
+
+New lessons reuse animated finger/key contacts, clickable highlighted scores, slow tempo, looping, and existing completion/check flows. Flat spellings are retained in the notation for B♭. Totals: violin Beginner 20 / all tracks 33, ukulele Beginner 22 / all tracks 34, accordion Beginner 20. IDs and recorded completions are preserved. All new Beginner scales are required by the existing track locks; Intermediate and Advanced require the enlarged prerequisite tracks to be complete. The Intermediate violin finale remains Noble Maiden Fair.

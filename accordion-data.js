@@ -1587,3 +1587,8 @@ const ACC_LESSONS=[
     "meter": "4/4"
   }
 ];
+
+ACC_UNITS.push('Scales · new note patterns');
+ACC_LESSONS.push(...BEGINNER_SCALES.accordion);
+
+for(const lesson of BEGINNER_SCALES.accordion)for(const n of lesson.notes)if(n.midi===70)n.spelling='B♭4';

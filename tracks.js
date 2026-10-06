@@ -3,6 +3,7 @@ window.MusicTracks=(()=>{
  const names=['Beginner','Intermediate','Advanced'];
  const ids={"violin":[["open","bow","first","three","hotcross","mary","cross","dmajor","twinkle","fourth","ode","lowtwo","gmajor","minor","double","arpeggio"],["slur-pairs","dotted-study","meadow-piece","shift-third","third-ladder","third-piece","noble-maiden-fair"],["sixteenth-bows","harmony-moving","harmony-piece","fifth-position","four-note-slurs","violin-capstone"]],"ukulele":[["hold","tune","pluck","frets","scale","rain","chord-c","chord-am","chord-f","pulse","chord-g7","changes","frere","lightly","skip","chord-g","upstrokes","first-piece"],["syncopation","fingerpick","interlude-uke","minor-family","barre-bb","minor-piece"],["upper-frets","movable-major","upper-piece","sixteenths","seventh-colors","uke-capstone"]]};
  ids.accordion=[["acc-hold", "acc-bellows", "acc-c", "acc-five", "acc-rhythm", "acc-hotcross", "acc-mary", "acc-bass-c", "acc-bass-chord", "acc-neighbors", "acc-waltz", "acc-both", "acc-ode", "acc-cg", "acc-duet", "acc-finale"]];
+ for(const instrument of ['violin','ukulele','accordion'])ids[instrument][0].push(...BEGINNER_SCALES[instrument].map(s=>s.id));
  const list=(instrument,track)=>ids[instrument][track];
  const count=(instrument,track,done)=>list(instrument,track).filter(id=>done.has(id)).length;
  const complete=(instrument,track,done)=>count(instrument,track,done)===list(instrument,track).length;
