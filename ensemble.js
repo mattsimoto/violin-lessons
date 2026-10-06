@@ -9,7 +9,7 @@ function buildEnsembleScore(song,steps,barsPerLine=2){
  const beats=Number(song.meter.split('/')[0]);let abc=`X:1\nT:${song.title}\nM:${song.meter}\nL:1/4\nQ:1/4=${song.tempo}\n%%score V1 V2 { V3 V4 }\nV:V1 clef=treble name="Violin"\nV:V2 clef=treble name="Ukulele"\nV:V3 clef=treble name="Accordion RH"\nV:V4 clef=bass name="Accordion bass"\nK:C\n`,segments=[];
  for(const [voice,instrument] of [['V1','violin'],['V2','ukulele'],['V3','accordion'],['V4','bass']]){
   abc+=`[V:${voice}] `;
-  steps.forEach((step,i)=>{const part=step.parts[instrument==='bass'?'accordion':instrument],pitches=ensemblePitches(part,instrument),start=abc.length,label=ensembleLabel(part,instrument),symbol=pitches.length===0?'z':pitches.length===1?ensembleABCNote(pitches[0]):'['+pitches.map(ensembleABCNote).join('')+']';abc+=(label?`"^${label}"`:'')+symbol+(instrument!=='bass'&&part.tie?'-':'');segments.push({start,end:abc.length,step:i,instrument});abc+=' ';if((i+1)%beats===0){abc+='| ';if((i+1)%(beats*barsPerLine)===0)abc+='\n';}});abc+='|]\n';
+  steps.forEach((step,i)=>{const part=step.parts[instrument==='bass'?'accordion':instrument],pitches=ensemblePitches(part,instrument),start=abc.length,label=ensembleLabel(part,instrument),symbol=pitches.length===0?'z':pitches.length===1?ensembleABCNote(pitches[0]):'['+pitches.map(ensembleABCNote).join('')+']';abc+=(label?`"^${label}"`:'')+symbol+(instrument!=='bass'&&part.tie?'-':'');segments.push({start,end:abc.length,step:i,instrument});abc+=' ';if((i+1)%beats===0){abc+='| ';if((i+1)%(beats*barsPerLine)===0)abc+='\n';}});abc=abc.trimEnd().replace(/\|\s*$/,'');abc+='|]\n';
  }
  return {abc,segments};
 }
