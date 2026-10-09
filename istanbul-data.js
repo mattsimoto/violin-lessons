@@ -1,0 +1,57 @@
+'use strict';
+// A linear teaching edition of the user's two-page violin score.
+// Transposed F minor -> C minor. Upper notes of double stops become single notes.
+// Repeat/D.S./D.C./coda navigation is omitted so learners can work through each
+// written bar once. Fast figures are retained; accompaniment is newly arranged.
+const istanbulBars=[
+ 'Ab4:.5 G4:.5 F4:1 C5:.5 Db5:.5 Eb5:.5 G5:.5',
+ 'F5:2 F5:.25 Gb5:.75 A5:.5 Bb5:.5',
+ 'A5:.5 Gb5:.5 F5:.5 Eb5:.5 F5:2',
+ 'F5:1 C5:1 Bb4:2',
+ 'Ab4:1 G4:1 F4:1 Eb4:1',
+ 'r:.5 C4:.25 F4:.25 G4:.5 Ab4:.75 C4:.25 F4:.25 G4:.25 Ab4:1',
+ 'Ab4:.5 r:.5 C4:.25 F4:.25 G4:.5 Ab4:.5 C4:.25 F4:.25 G4:.5 Ab4:.5',
+ 'Ab4:.5 r:.5 C4:.25 F4:.25 G4:.5 Ab4:.5 C4:.25 F4:.25 G4:.5 Ab4:.5',
+ 'r:1 G4:.25 Ab4:.25 G4:.25 F4:.25 G4:.5 F4:.5 E4:.5 G4:.5',
+ 'F4:1 Ab4:1 C5:1 F5:1',
+ 'Eb5:3 F5:1',
+ 'C6:4',
+ 'Bb5:.25 C6:.25 Bb5:.25 Ab5:.25 Bb5:1 Bb5:1 r:.5 Bb3:.25 Bb3:.25',
+ 'Eb4:.5 G4:.5 Bb4:.5 Bb3:.25 Eb4:.25 Eb4:.25 G4:.5 A4:.25 Bb4:.25 Bb3:.25 Bb3:.25 Bb3:.25',
+ 'Eb4:.5 G4:.5 Bb4:.5 Bb3:.25 Eb4:.25 Eb4:.25 G4:.5 A4:.25 Bb4:.25 Bb3:.25 Bb3:.25 Bb3:.25',
+ 'E4:.5 G4:.5 Bb4:.5 E4:.5 E4:.5 G4:.5 Db5:.25 C5:.25 Bb4:.25 Ab4:.125 G4:.125',
+ 'F4:.25 F4:.25 F4:.25 F4:.25 r:.5 F4:.25 F4:.25 F4:.5 F4:.25 F4:.25 r:1',
+ 'F4:.25 F4:.25 F4:.25 F4:.25 E4:.5 G4:.5 F4:1 Ab4:.5 Bb4:.5',
+ 'C5:1 Bb4:1 Ab4:1 Bb4:1',
+ 'Eb5:.5 F5:.5 C5:.5 Db5:.5 Bb4:2',
+ 'E4:.25 E4:.5 E4:.25 E4:.25 E4:.25 E4:.25 E4:.25 E4:.25 E4:.25 E4:.5 E4:1',
+ 'Db5:.25 Db5:.25 Db5:.5 F5:.5 G5:.5 Ab5:.25 Ab5:.25 Ab5:.5 Ab5:.5 Ab5:.5',
+ 'F4:.5 Ab4:.5 C5:.5 C4:.25 F4:.25 F4:.25 Ab4:.5 B4:.25 C5:.5 B4:.25 C5:.25',
+ 'F4:.5 Ab4:.5 C5:.5 C4:.25 F4:.25 F4:.25 Ab4:.5 B4:.25 C5:.25 C4:.25 C4:.25 C4:.25',
+ 'E4:.5 G4:.5 Bb4:.5 E4:.25 G4:.25 G4:.5 Bb4:.25 Ab4:.25 G4:.25 G4:.25 G4:.5',
+ 'F4:.5 F4:.25 F4:.25 F4:.25 G4:.25 Ab4:.25 Bb4:.25 C5:1 r:.5 C5:.5',
+ 'C4:.5 C4:.25 C4:.25 C4:.25 D4:.25 Eb4:.25 E4:.25 F4:2',
+ 'F5:2 F5:1 Ab5:.25 G5:.25 Ab5:.25 F5:.25',
+ 'F5:2 F5:1 Ab5:.25 G5:.25 Ab5:.25 F5:.25',
+ 'F5:2 F5:1 Ab5:.25 G5:.25 Ab5:.25 F5:.25',
+ 'F4:.25 F4:.25 F4:.25 F4:.25 F4:1 F4:2',
+ 'F5:2 F5:1 Ab5:.25 G5:.25 Ab5:.25 F5:.25',
+ 'F4:.25 F4:.25 F4:.25 F4:.25 F4:1 F4:1 r:1',
+ 'F5:2 F5:1 Ab5:.25 G5:.25 Ab5:.25 F5:.25',
+ 'F5:2 F5:1 Ab5:.25 G5:.25 Ab5:.25 F5:.25',
+ 'F4:.25 F4:.25 F4:.25 F4:.25 F4:1 F4:1 Ab4:.5 Bb4:.5',
+ 'C4:.25 C4:.25 F4:.25 G4:.25 Ab4:1 C4:.25 F4:.25 G4:.25 Ab4:.25 Bb4:.25 B4:.25 Bb4:.5',
+ 'r:.5 C4:.25 F4:.25 G4:.5 Ab4:.75 C4:.25 F4:.25 G4:.25 Ab4:.25 Bb4:.25 B4:.5',
+ 'r:.5 Ab5:.25 G5:.25 F5:.25 Ab5:.25 G5:.25 E5:.25 r:.5 Ab5:.25 G5:.25 F5:.25 Ab5:.25 G5:.25 F5:.25',
+ 'Eb5:.5 Db5:.5 C5:.5 Bb4:2 r:.5',
+ 'r:.5 C4:.25 Bb3:.25 Ab3:.75 C4:.25 C4:.5 Bb3:.5 Ab3:.5 Ab3:.5',
+ 'r:.5 C4:.5 Bb3:.25 Ab3:.25 G3:.5 r:.5 C4:.5 Bb3:.25 Ab3:.25 G3:.5',
+ 'r:.5 E4:.25 F4:.25 G4:.25 G4:.25 G4:.25 Ab4:.25 Bb4:.25 C5:.25 Bb4:.25 G4:.25 F4:.25 F4:.25 Eb4:.25 Db4:.25',
+ 'Eb4:2 r:1 Bb4:1',
+ 'C4:1 C4:1 C4:.25 E4:.5 E4:.25 Bb4:.5 Bb4:.5',
+ 'C5:4',
+ 'C5:1 C5:.75 C5:.25 C5:2',
+ 'C5:2 r:2'
+];
+function istanbulMelody(){return istanbulBars.flatMap((bar,i)=>{const notes=bar.split(' ').map(token=>{const [pitch,d]=token.split(':');const beats=Number(d);if(pitch==='r')return {rest:true,beats};const m=/^([A-G])([b#]?)(\d)$/.exec(pitch);let midi=({C:0,D:2,E:4,F:5,G:7,A:9,B:11}[m[1]]+(m[2]==='b'?-1:m[2]==='#'?1:0)+(Number(m[3])+1)*12)-5;if(midi<55)midi+=12;return {midi,beats};});const total=notes.reduce((s,n)=>s+n.beats,0);if(total!==4)throw Error(`Istanbul bar ${i+1}: ${total} beats`);return notes;});}
+ENSEMBLE_SONGS.push({id:'ens-istanbul',title:'Istanbul (Not Constantinople)',lead:'violin',meter:'4/4',key:'Cm',tempo:72,subdivision:.125,difficulty:'Intermediate',credit:'Kennedy / Simon · popularized by They Might Be Giants · user-supplied violin score, transposed to C minor. Linear 48-bar study: play each written bar once; repeats and coda jumps omitted, double stops reduced to their upper note. Simplified rhythm; new ukulele and accordion backing.',melody:istanbulMelody(),harmony:['Cm','Cm','G7','Cm','Fm','Cm','Cm','Cm','G7','Fm','G7','Cm','Bb','Bb','Bb','G7','Cm','Cm','Cm','Bb','G7','Bb','Cm','Cm','G7','Cm','G7','Cm','Cm','Cm','Fm','Cm','Fm','Cm','Cm','Cm','Cm','Cm','G7','G7','Fm','G7','Cm','G7','G7','Cm','Cm','Cm'],sources:[{name:'Ukulele chord reference',url:'https://www.ukulele-tabs.com/uke-songs/they-might-be-giants/istanbul-not-constantinople-uke-tab-64822.html'},{name:'Accordion arrangement reference',url:'https://musescore.com/user/30518339/scores/10712815'}]});

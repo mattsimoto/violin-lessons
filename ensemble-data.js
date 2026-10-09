@@ -2,8 +2,9 @@
 const ENSEMBLE_INSTRUMENTS=['violin','ukulele','accordion'];
 const ENSEMBLE_NAMES={violin:'Violin',ukulele:'Ukulele',accordion:'Accordion'};
 const ENSEMBLE_CHORDS={C:{root:60,tones:[60,64,67],frets:[0,0,0,3],fingers:[0,0,0,3]},F:{root:65,tones:[65,69,72],frets:[2,0,1,0],fingers:[2,0,1,0]},G7:{root:67,tones:[67,71,77],frets:[0,2,1,2],fingers:[0,2,1,3]}};
+Object.assign(ENSEMBLE_CHORDS,{Cm:{root:60,tones:[60,63,67],frets:[0,3,3,3],fingers:[0,1,1,1],bassRoot:'C',type:'minor'},Fm:{root:65,tones:[65,68,72],frets:[1,0,1,3],fingers:[1,0,2,4],bassRoot:'F',type:'minor'},Bb:{root:58,tones:[58,62,65],frets:[3,2,1,1],fingers:[3,2,1,1],bassRoot:'Bb',type:'major'}});
 const ensembleMidi=name=>({C:0,D:2,E:4,F:5,G:7,A:9,B:11}[name[0]]+(Number(name.slice(-1))+1)*12);
-const ensemblePitch=midi=>['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'][midi%12]+(Math.floor(midi/12)-1);
+const ensemblePitch=midi=>(typeof ensembleSong!=='undefined'&&ensembleSong.key==='Cm'?['C','D♭','D','E♭','E','F','G♭','G','A♭','A','B♭','B']:['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'])[midi%12]+(Math.floor(midi/12)-1);
 const ensembleTune=notes=>notes.map(n=>({midi:ensembleMidi(Array.isArray(n)?n[0]:n),beats:Array.isArray(n)?n[1]:1}));
 const ENSEMBLE_SONGS=[
  {id:'ens-twinkle',title:'Twinkle, Twinkle, Little Star',lead:'violin',meter:'4/4',tempo:64,credit:'Traditional melody · simple C-major trio arrangement',melody:ensembleTune(['C4','C4','G4','G4','A4','A4',['G4',2],'F4','F4','E4','E4','D4','D4',['C4',2],'G4','G4','F4','F4','E4','E4',['D4',2],'G4','G4','F4','F4','E4','E4',['D4',2],'C4','C4','G4','G4','A4','A4',['G4',2],'F4','F4','E4','E4','D4','D4',['C4',2]]),harmony:['C',['F','C'],['F','C'],['G7','C'],'C',['C','G7'],'C',['C','G7'],'C',['F','C'],['F','C'],['G7','C']]},
@@ -21,14 +22,22 @@ function ensembleUkulele(midi){const positions={60:[1,0,0],62:[1,2,2],64:[2,0,0]
 function ensembleAccordion(midi){return {midi,finger:{60:1,62:2,64:3,65:4,67:5}[midi]||1};}
 function buildEnsemble(song){
  const barBeats=Number(song.meter.split('/')[0]),steps=[];let beat=0;
- for(const n of song.melody){for(let b=0;b<n.beats;b++){
-  const within=beat%barBeats,harmony=song.harmony[Math.floor(beat/barBeats)]||'C',chordName=Array.isArray(harmony)?harmony[within<2?0:1]:harmony,chord=ENSEMBLE_CHORDS[chordName],parts={};
-  const bowStart=within===0||barBeats===4&&within===2;
-  parts.violin=song.lead==='violin'?{...ensembleViolin(n.midi),beats:1,tie:b<n.beats-1,continue:b>0}:{...ensembleViolin(chord.root),beats:1,tie:within<(barBeats===3?2:within<2?1:3),continue:!bowStart};
-  parts.ukulele=song.lead==='ukulele'?{...ensembleUkulele(n.midi),beats:1,tie:b<n.beats-1,continue:b>0}:bowStart?{chord:chordName,beats:1}:{rest:true,beats:1};
-  const left=within===0?{root:chordName==='G7'?'G':chordName,type:'bass',finger:4}:within===2||barBeats===3&&within===1?{root:chordName==='G7'?'G':chordName,type:chordName==='G7'?'seventh':'major',finger:3}:null;
-  parts.accordion=song.lead==='accordion'?{...ensembleAccordion(n.midi),beats:1,tie:b<n.beats-1,continue:b>0,left}:{...ensembleAccordion(chord.root),beats:1,tie:Array.isArray(harmony)?within%2===0:within<barBeats-1,continue:Array.isArray(harmony)?within%2!==0:within>0,left};
-  steps.push({beat:beat++,bar:Math.floor((beat-1)/barBeats)+1,chord:chordName,parts});
+ for(const n of song.melody){let elapsed=0;while(elapsed<n.beats){
+  const duration=Math.min(n.beats-elapsed,1-beat%1),within=beat%barBeats,harmony=song.harmony[Math.floor(beat/barBeats)]||'C',chordName=Array.isArray(harmony)?harmony[within<2?0:1]:harmony,chord=ENSEMBLE_CHORDS[chordName],parts={};
+  const bowStart=within===0||barBeats===4&&within===2,previous=steps.at(-1),sameChord=previous&&previous.chord===chordName;
+  const held={beats:duration,tie:within+duration<(barBeats===3?3:within<2?2:4),continue:!!sameChord&&!bowStart};
+  const lead={beats:duration,tie:elapsed+duration<n.beats,continue:elapsed>0};
+  parts.violin=song.lead==='violin'?n.rest?{rest:true,beats:duration}:{...ensembleViolin(n.midi),...lead}:{...ensembleViolin(chord.root),...held};
+  parts.ukulele=song.lead==='ukulele'?n.rest?{rest:true,beats:duration}:{...ensembleUkulele(n.midi),...lead}:bowStart?{chord:chordName,beats:duration,tie:within+duration<within+1,continue:false}:within%1!==0&&Math.floor(within)%2===0?{chord:chordName,beats:duration,tie:within%1+duration<1,continue:true}:{rest:true,beats:duration};
+  const root=chord.bassRoot||(chordName==='G7'?'G':chordName),type=chord.type||(chordName==='G7'?'seventh':'major');
+  const left=within===0?{root,chord:chordName,type:'bass',finger:4}:within===2||barBeats===3&&within===1?{root,chord:chordName,type,finger:3}:null;
+  parts.accordion=song.lead==='accordion'?{...ensembleAccordion(n.midi),...lead,left}:{...ensembleAccordion(chord.root),beats:duration,tie:Array.isArray(harmony)?within%2+duration<2:within+duration<barBeats,continue:!!sameChord&&(Array.isArray(harmony)?within%2!==0:within>0),left};
+  // Bass notes last one quarter beat, even when the violin divides that beat.
+  const bassStart=Math.floor(within),bassActive=bassStart===0||bassStart===2||barBeats===3&&bassStart===1;
+  parts.accordion.bass=bassActive?{root,chord:chordName,type:bassStart===0?'bass':type,finger:bassStart===0?4:3}:null;
+  parts.accordion.bassTie=bassActive&&within%1+duration<1;
+  parts.accordion.bassContinue=bassActive&&within%1!==0;
+  steps.push({beat,beats:duration,bar:Math.floor(beat/barBeats)+1,chord:chordName,parts});beat+=duration;elapsed+=duration;
  }}
  return steps;
 }
